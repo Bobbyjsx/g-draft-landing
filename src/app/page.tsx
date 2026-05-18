@@ -7,7 +7,7 @@ import { CTA } from "@/components/modules/cta";
 
 export default function Home() {
   return (
-    <div className="h-screen overflow-y-auto snap-y snap-mandatory scroll-smooth bg-background text-foreground selection:bg-primary/30">
+    <div className="h-screen overflow-y-auto snap-y snap-mandatory scroll-smooth bg-background text-foreground selection:bg-primary/30 grid-bg">
       <Navbar />
       <Hero />
       <Features />
