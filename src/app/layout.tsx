@@ -16,6 +16,10 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "g-draft ✦ Your terminal's ghostwriter",
   description: "Automate commits, PR descriptions, and rigorous code audits with your local AI agents (Claude, Gemini, OpenAI).",
+  icons: {
+    icon: "/logo.svg",
+    apple: "/logo.svg",
+  },
 };
 
 export default function RootLayout({

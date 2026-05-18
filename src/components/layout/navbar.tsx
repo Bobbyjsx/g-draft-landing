@@ -5,6 +5,7 @@ import { Menu, X, Terminal } from "lucide-react";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { GithubIcon } from "@/components/ui/icons";
+import { Logo } from "@/components/ui/logo";
 import Link from "next/link";
 import { useInstallModal } from "@/components/modules/install-modal";
 
@@ -17,9 +18,7 @@ export const Navbar = () => {
       <div className="container mx-auto px-6">
         <div className="flex h-20 items-center justify-between">
           <Link href="/" className="flex items-center gap-3 group">
-            <div className="w-9 h-9 rounded-xl bg-red-600 flex items-center justify-center shadow-[0_0_20px_rgba(239,68,68,0.3)] group-hover:shadow-[0_0_30px_rgba(239,68,68,0.5)] group-hover:scale-105 transition-all duration-300">
-              <span className="text-white font-black text-xl italic select-none">g</span>
-            </div>
+            <Logo className="w-9 h-9 shadow-[0_0_20px_rgba(239,68,68,0.3)] group-hover:shadow-[0_0_30px_rgba(239,68,68,0.5)] group-hover:scale-105 transition-all duration-300" />
             <span className="font-bold text-xl tracking-tight text-white group-hover:text-red-500 transition-colors">g-draft</span>
           </Link>
 

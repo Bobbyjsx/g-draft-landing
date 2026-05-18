@@ -1,6 +1,7 @@
 "use client";
 
 import { GithubIcon } from "@/components/ui/icons";
+import { Logo } from "@/components/ui/logo";
 import Link from "next/link";
 
 export const Footer = () => {
@@ -13,9 +14,7 @@ export const Footer = () => {
         <div className="flex flex-col md:flex-row justify-between items-start gap-12">
           <div className="flex flex-col gap-6">
             <div className="flex items-center gap-3">
-              <div className="w-8 h-8 rounded-lg bg-zinc-900 border border-white/5 flex items-center justify-center">
-                <span className="text-zinc-500 font-bold text-sm italic">g</span>
-              </div>
+              <Logo className="w-8 h-8" />
               <span className="font-bold text-lg tracking-tight text-white">g-draft</span>
             </div>
             <p className="text-zinc-500 text-sm max-w-xs leading-relaxed">

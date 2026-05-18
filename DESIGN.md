@@ -47,6 +47,10 @@ The g-draft design system is built for the "Terminal-Native" developer. It empha
 
 ## Core Components
 
+### Brand Assets
+- **Logo:** A rounded square (`rx=48`) with `#EF4444` background, featuring a white stylized "G" and a 20% opacity accent line.
+- **Favicon:** The SVG logo is used as the primary site icon and apple-touch-icon.
+
 ### Command Bar
 A floating, translucent input field that serves as the entry point for g-draft commands. It should feel lightweight yet grounded through subtle shadows and border-glows.
 
