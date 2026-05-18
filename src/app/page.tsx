@@ -7,16 +7,12 @@ import { CTA } from "@/components/modules/cta";
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-background text-foreground selection:bg-primary/30">
+    <div className="h-screen overflow-y-auto snap-y snap-mandatory scroll-smooth bg-background text-foreground selection:bg-primary/30">
       <Navbar />
-      <main>
-        <Hero />
-        <section id="features">
-          <Features />
-        </section>
-        <Performance />
-        <CTA />
-      </main>
+      <Hero />
+      <Features />
+      <Performance />
+      <CTA />
       <Footer />
     </div>
   );

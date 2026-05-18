@@ -1,7 +1,16 @@
 "use client";
 
-import { motion } from "framer-motion";
-import { GitCommitVertical, FileText, ShieldCheck, Zap, MousePointer2, History } from "lucide-react";
+import React from "react";
+import {
+  FileText,
+  GitCommitVertical,
+  History,
+  MousePointer2,
+  ShieldCheck,
+  Zap,
+} from "lucide-react";
+import { ScrollReveal } from "@/components/ui/scroll-reveal";
+import { FeatureCard } from "@/components/ui/feature-card";
 
 const features = [
   {
@@ -44,37 +53,23 @@ const features = [
 
 export const Features = () => {
   return (
-    <section className="py-32 relative border-t border-white/[0.03]">
+    <section className="py-32 relative border-t border-white/[0.03] sm:max-w-6xl 2xl:max-w-7xl max-w-[90%] w-full mx-auto snap-start min-h-screen flex flex-col justify-center">
       <div className="container mx-auto px-4">
-        <div className="text-center max-w-3xl mx-auto mb-24">
+        <ScrollReveal className="text-center max-w-3xl mx-auto mb-24">
           <h2 className="text-4xl md:text-5xl font-bold mb-6 tracking-tight">
-            Stop drafting. <br /> <span className="text-zinc-500 italic">Start shipping.</span>
+            Stop drafting. <br />{" "}
+            <span className="text-zinc-500 italic">Start shipping.</span>
           </h2>
           <p className="text-zinc-500 text-lg leading-relaxed">
-            We focus on reducing your typing load and cognitive fatigue. <br className="hidden md:block" /> g-draft handles the context-gathering so you don&apos;t have to.
+            We focus on reducing your typing load and cognitive fatigue.{" "}
+            <br className="hidden md:block" /> g-draft handles the
+            context-gathering so you don&apos;t have to.
           </p>
-        </div>
+        </ScrollReveal>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-px bg-white/[0.05] border border-white/[0.05] rounded-3xl overflow-hidden">
           {features.map((feature, index) => (
-            <motion.div
-              key={feature.title}
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: index * 0.05 }}
-              className="p-10 bg-black hover:bg-white/[0.02] transition-colors group relative"
-            >
-              <div className={`w-10 h-10 flex items-center justify-center mb-8 ${feature.color}`}>
-                <feature.icon className="w-6 h-6" />
-              </div>
-              <h3 className="text-lg font-bold mb-3 text-zinc-100 group-hover:text-white transition-colors">
-                {feature.title}
-              </h3>
-              <p className="text-zinc-500 leading-relaxed text-sm">
-                {feature.description}
-              </p>
-            </motion.div>
+            <FeatureCard key={feature.title} {...feature} index={index} />
           ))}
         </div>
       </div>

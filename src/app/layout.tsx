@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import { InstallModalProvider } from "@/components/modules/install-modal";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -13,8 +14,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "g-draft ✦ AI-Powered Git Assistant",
-  description: "Automate commits, PR descriptions, and rigorous code audits in under 2 seconds. The high-performance AI assistant for your terminal.",
+  title: "g-draft ✦ Your terminal's ghostwriter",
+  description: "Automate commits, PR descriptions, and rigorous code audits with your local AI agents (Claude, Gemini, OpenAI).",
 };
 
 export default function RootLayout({
@@ -28,7 +29,11 @@ export default function RootLayout({
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased dark`}
       style={{ colorScheme: 'dark' }}
     >
-      <body className="min-h-full flex flex-col">{children}</body>
+      <body className="min-h-full flex flex-col">
+        <InstallModalProvider>
+          {children}
+        </InstallModalProvider>
+      </body>
     </html>
   );
 }

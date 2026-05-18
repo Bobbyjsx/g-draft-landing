@@ -6,9 +6,11 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { GithubIcon } from "@/components/ui/icons";
 import Link from "next/link";
+import { useInstallModal } from "@/components/modules/install-modal";
 
 export const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const { open: openInstallModal } = useInstallModal();
 
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-black/50 backdrop-blur-2xl border-b border-white/[0.05]">
@@ -25,11 +27,17 @@ export const Navbar = () => {
           <div className="hidden md:flex items-center gap-10">
             <Link href="/#features" className="text-xs font-bold uppercase tracking-widest text-zinc-500 hover:text-white transition-colors">Features</Link>
             <Link href="/docs/introduction" className="text-xs font-bold uppercase tracking-widest text-zinc-500 hover:text-white transition-colors">Documentation</Link>
-            <a href="https://github.com" target="_blank" rel="noreferrer" className="text-xs font-bold uppercase tracking-widest text-zinc-500 hover:text-white transition-colors flex items-center gap-2">
+            <a href="https://github.com/Bobbyjsx/g-draft" target="_blank" rel="noreferrer" className="text-xs font-bold uppercase tracking-widest text-zinc-500 hover:text-white transition-colors flex items-center gap-2">
               <GithubIcon className="w-4 h-4" />
               GitHub
             </a>
-            <Button size="sm" className="bg-white text-black hover:bg-zinc-200 border-none rounded-lg px-6 font-bold h-9">Install</Button>
+            <Button 
+              size="sm" 
+              className="bg-white text-black hover:bg-zinc-200 border-none rounded-lg px-6 font-bold h-9"
+              onClick={openInstallModal}
+            >
+              Install
+            </Button>
           </div>
 
           {/* Mobile Toggle */}
@@ -48,11 +56,20 @@ export const Navbar = () => {
         >
           <Link href="/#features" onClick={() => setIsOpen(false)} className="text-sm font-bold uppercase tracking-widest text-zinc-400">Features</Link>
           <Link href="/docs/introduction" onClick={() => setIsOpen(false)} className="text-sm font-bold uppercase tracking-widest text-zinc-400">Documentation</Link>
-          <a href="https://github.com" className="text-sm font-bold uppercase tracking-widest text-zinc-400 flex items-center gap-2">
+          <a href="https://github.com/Bobbyjsx/g-draft" className="text-sm font-bold uppercase tracking-widest text-zinc-400 flex items-center gap-2">
             <GithubIcon className="w-5 h-5" />
             GitHub
           </a>
-          <Button size="lg" className="w-full bg-red-600 text-white border-none rounded-xl">Install g-draft</Button>
+          <Button 
+            size="lg" 
+            className="w-full bg-red-600 text-white border-none rounded-xl"
+            onClick={() => {
+              setIsOpen(false);
+              openInstallModal();
+            }}
+          >
+            Install g-draft
+          </Button>
         </motion.div>
       )}
     </nav>

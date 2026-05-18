@@ -15,7 +15,39 @@ export function getDocBySlug(slug: string) {
   const fileContents = fs.readFileSync(fullPath, "utf8");
   const { data, content } = matter(fileContents);
 
-  return { slug: realSlug, meta: data, content };
+  // Robust link rewriting to ensure internal markdown links work on the web
+  const transformedContent = content.replace(/\]\((.*?)\)/g, (match, linkPath) => {
+    // Only transform internal relative links
+    if (linkPath.startsWith("http") || linkPath.startsWith("#") || linkPath.startsWith("/")) {
+      return match;
+    }
+
+    let newLink = linkPath;
+
+    // Handle README mapping specifically
+    if (newLink === "README.md" || newLink === "../README.md") {
+      return `](/docs/introduction)`;
+    }
+
+    // Remove docs/ prefix if present to normalize paths
+    if (newLink.startsWith("docs/")) {
+      newLink = newLink.replace("docs/", "");
+    } else if (newLink.startsWith("./docs/")) {
+       newLink = newLink.replace("./docs/", "");
+    }
+
+    // Ensure it starts with /docs/
+    newLink = `/docs/${newLink}`;
+
+    // Remove .md extension only for documentation pages
+    if (newLink.endsWith(".md")) {
+      newLink = newLink.replace(/\.md$/, "");
+    }
+
+    return `](${newLink})`;
+  });
+
+  return { slug: realSlug, meta: data, content: transformedContent };
 }
 
 export function getAllDocs() {
